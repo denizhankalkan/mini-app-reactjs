@@ -3,35 +3,12 @@
  */
 
 import { createSelector } from 'reselect';
+
 import { initialState } from './reducer';
 
 const selectGlobal = state => state.global || initialState;
 
 const selectRouter = state => state.router;
-
-const makeSelectCurrentUser = () =>
-  createSelector(
-    selectGlobal,
-    globalState => globalState.currentUser,
-  );
-
-const makeSelectLoading = () =>
-  createSelector(
-    selectGlobal,
-    globalState => globalState.loading,
-  );
-
-const makeSelectError = () =>
-  createSelector(
-    selectGlobal,
-    globalState => globalState.error,
-  );
-
-const makeSelectRepos = () =>
-  createSelector(
-    selectGlobal,
-    globalState => globalState.userData.repositories,
-  );
 
 const makeSelectLocation = () =>
   createSelector(
@@ -39,11 +16,84 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
+const makeSelectUser = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.user,
+  );
+
+const makeSelectCompany = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.company,
+  );
+
+const makeSelectBranch = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.branch,
+  );
+
+const makeSelectUseInin = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.useInin,
+  );
+
+const makeSelectPinnedTabs = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.pinnedTabs,
+  );
+
+const makeSelectClearTabs = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.tabs,
+  );
+
+const makeSelectTabs = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.tabs,
+  );
+
+const makeSelectInteractions = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.interactions,
+  );
+
+const makeSelectToastMessages = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.toastMessages,
+  );
+
+const makeSelectCheckTime = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.messageCheckTime,
+  );
+
+const makeSelectAutoAnswerFlag = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.autoAnswerFlag,
+  );
+
 export {
   selectGlobal,
-  makeSelectCurrentUser,
-  makeSelectLoading,
-  makeSelectError,
-  makeSelectRepos,
   makeSelectLocation,
+  makeSelectUser,
+  makeSelectCompany,
+  makeSelectBranch,
+  makeSelectUseInin,
+  makeSelectTabs,
+  makeSelectPinnedTabs,
+  makeSelectInteractions,
+  makeSelectToastMessages,
+  makeSelectCheckTime,
+  makeSelectClearTabs,
+  makeSelectAutoAnswerFlag,
 };

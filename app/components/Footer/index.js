@@ -9,9 +9,9 @@ import messages from './messages';
 function Footer() {
   return (
     <Wrapper>
-      <section>
+
         <FormattedMessage {...messages.licenseMessage} />
-      </section>
+
       <section>
         <LocaleToggle />
       </section>
