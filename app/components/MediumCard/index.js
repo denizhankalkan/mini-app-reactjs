@@ -22,13 +22,13 @@ const ExpansionCard = props => {
       className={clx(classes.root, {
         [classes.rootMd]: width === 'md',
       })}
-      style={{ height: '80px' }}
+      style={{ height: '180px' }}
     >
       <CardHeader
         title={
           <Grid className={clx(classes.cardTitleGrid)}>
             <Tooltip title={title} interactive placement="top-end">
-              <Typography noWrap style={{ marginLeft: 20, marginTop: 5 }}>
+              <Typography noWrap style={{ marginLeft: 20, marginTop: 10 }}>
                 <strong className={classes.strongFontW}>{title}</strong>
               </Typography>
             </Tooltip>
@@ -36,9 +36,12 @@ const ExpansionCard = props => {
         }
       />
       <Grid container style={{ marginLeft: 20, marginTop: 20 }}>
-        <Grid>{element}</Grid>
-
-        <Grid>{number}</Grid>
+        <Grid>
+          <strong className={classes.strongFontElement}>{element}</strong>
+        </Grid>
+        <Grid style={{ marginLeft: 20 }}>
+          <strong className={classes.strongFontNumber}>{number}</strong>
+        </Grid>
       </Grid>
     </Card>
   );

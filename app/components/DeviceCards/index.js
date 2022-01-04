@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import Card from 'components/Card';
+import MediumCard from 'components/MediumCard';
 import { PropTypes } from 'prop-types';
 import { Grid } from '@material-ui/core';
 import OnlinePredictionIcon from '@mui/icons-material/OnlinePrediction';
 import axios from 'axios';
+
 import TabletAndroidIcon from '@mui/icons-material/TabletAndroid';
 import HideSourceIcon from '@mui/icons-material/HideSource';
 import BatteryCharging20Icon from '@mui/icons-material/BatteryCharging20';
 import Battery60Icon from '@mui/icons-material/Battery60';
-
+import NoCellIcon from '@mui/icons-material/NoCell';
+import HomeMaxIcon from '@mui/icons-material/HomeMax';
 const Header = () => {
   const baseURL = ' https://apidev.boniglobal.com/Test/DeviceStatistics';
   const [deviceStatics, setDeviceStatics] = React.useState(null);
@@ -26,7 +29,11 @@ const Header = () => {
     <>
       <Grid container style={{ marginTop: '20px' }}>
         <Grid item xs={3} style={{ height: '125px' }}>
-          <Card title="Total Gateway" />
+          <MediumCard
+            title="Total Gateway"
+            number="20"
+            element={<HomeMaxIcon style={{ fontSize: 'xxx-large' }} />}
+          />
         </Grid>
         <Grid item xs={9}>
           <Grid container>
@@ -68,10 +75,18 @@ const Header = () => {
               />
             </Grid>
             <Grid item xs={3}>
-              <Card title="Total Number Of Passive Device" />
+              <Card
+                title="Total Number"
+                number="123"
+                element={<NoCellIcon />}
+              />
             </Grid>
             <Grid item xs={3}>
-              <Card title="Devices For No Users" />
+              <Card
+                title="Devices For No Users"
+                number="4234"
+                element={<TabletAndroidIcon />}
+              />
             </Grid>
           </Grid>
         </Grid>

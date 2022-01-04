@@ -5,9 +5,9 @@ import DataGrid, {
   HeaderFilter,
   SearchPanel,
 } from 'devextreme-react/data-grid';
-import Button from 'devextreme-react/button';
 import 'devextreme/dist/css/dx.light.css';
 import axios from 'axios';
+import { Paper, Grid } from '@material-ui/core';
 
 const DataGridTable = () => {
   const [currentFilter] = React.useState(null);
@@ -54,32 +54,36 @@ const DataGridTable = () => {
 
   return (
     <div>
-      <Button text="Export multiple grids" icon="xlsxfile" />
-      <DataGrid
-        id="gridContainer"
-        dataSource={devices?.data?.items}
-        showBorders
-        rowAlternationEnabled
-      >
-        <FilterRow visible={showFilterRow} applyFilter={currentFilter} />
-        <HeaderFilter visible={showHeaderFilter} />
-        <SearchPanel visible width={240} placeholder="Search..." />
+      <Paper>
+        <Grid style={{ marginLeft: 10, marginTop: 10 }}>
+          <h3>Device Statistics</h3>
+        </Grid>
+        <DataGrid
+          id="gridContainer"
+          dataSource={devices?.data?.items}
+          showBorders
+          rowAlternationEnabled
+        >
+          <FilterRow visible={showFilterRow} applyFilter={currentFilter} />
+          <HeaderFilter visible={showHeaderFilter} />
+          <SearchPanel visible width={240} placeholder="Search..." />
 
-        <Column
-          dataField="deviceId"
-          alignment="right"
-          width={180}
-          calculateFilterExpression={calculateFilterExpression}
-        />
-        <Column dataField="macAddress" alignment="right" />
-        <Column dataField="batteryPower" alignment="right" dataType="number">
-          <HeaderFilter dataSource={BatteryPowerHeaderFilter} />
-        </Column>
-        <Column dataField="lastDataSent" />
-        <Column dataField="lastSeenGatewayId">
-          <HeaderFilter allowSearch />
-        </Column>
-      </DataGrid>
+          <Column
+            dataField="deviceId"
+            alignment="right"
+            width={180}
+            calculateFilterExpression={calculateFilterExpression}
+          />
+          <Column dataField="macAddress" alignment="right" />
+          <Column dataField="batteryPower" alignment="right" dataType="number">
+            <HeaderFilter dataSource={BatteryPowerHeaderFilter} />
+          </Column>
+          <Column dataField="lastDataSent" />
+          <Column dataField="lastSeenGatewayId">
+            <HeaderFilter allowSearch />
+          </Column>
+        </DataGrid>
+      </Paper>
     </div>
   );
 };

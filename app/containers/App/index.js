@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 import MainContainer from 'containers/MainContainer';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from 'components/Header';
+import NotFoundPage from 'containers/NotFoundPage';
+import Header from 'components/DeviceCards';
 import StatisticTable from 'containers/DataGridTable';
 
 import GlobalStyle from '../../global-styles';
