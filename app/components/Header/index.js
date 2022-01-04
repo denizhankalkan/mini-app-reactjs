@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Card from 'components/ExpansionCard';
+import Card from 'components/Card';
 import { PropTypes } from 'prop-types';
 import { Grid } from '@material-ui/core';
 import OnlinePredictionIcon from '@mui/icons-material/OnlinePrediction';
@@ -9,16 +9,17 @@ import HideSourceIcon from '@mui/icons-material/HideSource';
 import BatteryCharging20Icon from '@mui/icons-material/BatteryCharging20';
 import Battery60Icon from '@mui/icons-material/Battery60';
 
-const Header = ({ title, children, subHeader }) => {
+const Header = () => {
   const baseURL = ' https://apidev.boniglobal.com/Test/DeviceStatistics';
   const [deviceStatics, setDeviceStatics] = React.useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     axios.get(baseURL).then(response => {
       setDeviceStatics(response.data);
     });
   }, []);
 
+  // eslint-disable-next-line no-console
   console.log('deviceStatics', deviceStatics?.data);
 
   return (
@@ -67,10 +68,10 @@ const Header = ({ title, children, subHeader }) => {
               />
             </Grid>
             <Grid item xs={3}>
-              <Card title="Active Gateway" />
+              <Card title="Total Number Of Passive Device" />
             </Grid>
             <Grid item xs={3}>
-              <Card title="Active Gateway" />
+              <Card title="Devices For No Users" />
             </Grid>
           </Grid>
         </Grid>

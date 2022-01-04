@@ -8,35 +8,22 @@ import CalendarTodayRoundedIcon from '@material-ui/icons/CalendarTodayRounded';
 import PhoneRoundedIcon from '@material-ui/icons/PhoneRounded';
 import classNames from 'classnames';
 import { StyledBadge } from 'components/Badge';
-// import AgendaCollapsible from 'containers/AgendaCollapsible';
-import { makeSelectUseInin } from 'containers/App/selectors';
-// import CallPanel from 'containers/CallPanel';
-// import { makeSelectInteractions } from 'containers/PhoneProvider/selectors';
 import PropTypes from 'prop-types';
-import React, { memo, useEffect, useState } from 'react';
-// import { useIntl } from 'react-intl';
+import React, { memo } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { createStructuredSelector } from 'reselect';
-import AssessmentIcon from '@mui/icons-material/Assessment';
 import styles from './index.style';
-import messages from './messages';
 import NavigationItem from './NavigationItem';
 import PhoneItem from './PhoneItem';
 import Progress from './Progress';
 
 const NavigationDrawer = ({
-  isDialerActive,
   classes,
   open,
-  // interactions,
   selectedMenuIndex,
   onTriggeredOpen,
   onChangedIndex,
 }) => {
-  const [hasAvailableCall, setAvailableCall] = useState(false);
-
-  // const intl = useIntl();
   const dailyList = 'Daily List';
   const performanceIndicators = 'Device Control';
   const callControl = 'Call Control';
@@ -50,15 +37,6 @@ const NavigationDrawer = ({
       onTriggeredOpen();
     }
   };
-
-  const isPhoneBadgeVisibility = () => {
-    if (open) return false;
-    return hasAvailableCall;
-  };
-
-  // useEffect(() => {
-  //   setAvailableCall(interactions.filter(v => v.State === Alerting).length > 0);
-  // }, [interactions]);
 
   return (
     <Drawer
@@ -99,16 +77,12 @@ const NavigationDrawer = ({
             isActive={selectedMenuIndex === 1}
             open={open}
             transitionDelay="100ms"
-            disabled={!isDialerActive}
             onClick={() => handleChangeIndex(1)}
             title={callControl}
           >
-            {!isPhoneBadgeVisibility() && <PhoneRoundedIcon />}
-            {isPhoneBadgeVisibility() && (
-              <StyledBadge variant="dot" color="primary">
-                <PhoneRoundedIcon className={classes.icon} />
-              </StyledBadge>
-            )}
+            <StyledBadge color="primary">
+              <PhoneRoundedIcon className={classes.icon} />
+            </StyledBadge>
           </PhoneItem>
         </Grid>
 
@@ -151,10 +125,8 @@ NavigationDrawer.propTypes = {
   open: PropTypes.bool.isRequired,
   classes: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   selectedMenuIndex: PropTypes.number,
-  // interactions: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   onTriggeredOpen: PropTypes.func,
   onChangedIndex: PropTypes.func,
-  isDialerActive: PropTypes.bool,
 };
 
 NavigationDrawer.defaultProps = {
@@ -163,15 +135,7 @@ NavigationDrawer.defaultProps = {
   onChangedIndex: null,
 };
 
-const mapStateToProps = createStructuredSelector({
-  // interactions: makeSelectInteractions(),
-  isDialerActive: makeSelectUseInin(),
-});
-
-const withConnect = connect(
-  mapStateToProps,
-  null,
-);
+const withConnect = connect(null);
 
 export default compose(
   withConnect,

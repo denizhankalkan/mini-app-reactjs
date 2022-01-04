@@ -1,45 +1,71 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-// import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-// import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-// import SkipNextIcon from '@mui/icons-material/SkipNext';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Collapse,
+  Grid,
+  makeStyles,
+  Tooltip,
+  Typography,
+} from '@material-ui/core';
+import clx from 'classnames';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-export default function MediaControlCard() {
-  const theme = useTheme();
+import styles from './index.style';
+
+const ExpansionCard = props => {
+  const { title, width, number, element } = props;
+  const useStyles = makeStyles(styles);
+  const classes = useStyles();
 
   return (
-    <Card sx={{ display: 'flex' }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h5">
-            Live From Space
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            color="text.secondary"
-            component="div"
-          >
-            Mac Miller
-          </Typography>
-        </CardContent>
-        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-          <IconButton aria-label="play/pause">
-            {/* <PlayArrowIcon sx={{ height: 38, width: 38 }} /> */}
-          </IconButton>
-          {/* <IconButton aria-label="next">
-            {theme.direction === 'rtl' ? (
-              <SkipPreviousIcon />
-            ) : (
-              <SkipNextIcon />
-            )}
-          </IconButton> */}
-        </Box>
-      </Box>
+    <Card
+      className={clx(classes.root, {
+        [classes.rootMd]: width === 'md',
+      })}
+      style={{ height: '80px' }}
+    >
+      <CardHeader
+        title={
+          <Grid className={clx(classes.cardTitleGrid)}>
+            <Tooltip title={title} interactive placement="top-end">
+              <Typography noWrap style={{ marginLeft: 20 }}>
+                <strong className={classes.strongFontW}>{title}</strong>
+              </Typography>
+            </Tooltip>
+          </Grid>
+        }
+      />
+      <Grid container style={{ marginLeft: 20, marginTop: 20 }}>
+        <Grid>{element}</Grid>
+
+        <Grid>{number}</Grid>
+      </Grid>
+
+      <Collapse timeout="auto">
+        <CardContent
+          number={
+            <Typography noWrap>
+              <strong className={classes.strongFontW}>{number}</strong>
+            </Typography>
+          }
+        />
+      </Collapse>
     </Card>
   );
-}
+};
+
+ExpansionCard.propTypes = {
+  number: PropTypes.number,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  width: PropTypes.oneOf(['sm', 'md']),
+  element: PropTypes.element,
+};
+
+ExpansionCard.defaultProps = {
+  title: '',
+  width: 'sm',
+};
+
+export default ExpansionCard;

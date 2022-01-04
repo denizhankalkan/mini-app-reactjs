@@ -2,12 +2,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Zoom from '@material-ui/core/Zoom';
 import PropTypes from 'prop-types';
 import React from 'react';
-// import { idfy } from 'utils/common';
 
 import TabButton from './TabButton';
 
 const InternalZoomEffectButton = ({
-  // transitionDelay,
   menuOpen,
   isActive,
   onClick,
@@ -30,7 +28,6 @@ const InternalZoomEffectButton = ({
 
 InternalZoomEffectButton.propTypes = {
   children: PropTypes.node,
-  // transitionDelay: PropTypes.string.isRequired,
   menuOpen: PropTypes.bool,
   isActive: PropTypes.bool,
   onClick: PropTypes.func,

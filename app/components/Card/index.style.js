@@ -51,7 +51,6 @@ export default function(theme) {
     cardTitleGrid: {
       width: '14ch',
       marginTop: '-7px',
-      //  borderBottom: `1.5px solid ${theme.palette.divider}`,
     },
     cardTitleGridWithAvatar: {
       width: '22ch',

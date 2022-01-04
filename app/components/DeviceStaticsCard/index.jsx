@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import ExpansionCard from '../ExpansionCard';
+import ExpansionCard from '../Card';
 
 const DeviceCard = props => {
-  const { title, checkbox, key } = props;
+  const { title, checkbox } = props;
 
   return (
     <>

@@ -7,8 +7,8 @@ const styles = theme => ({
     padding: '5px 10px',
     margin: '5px',
     height: 94,
-    background: theme.palette.common.paleGrey,
-    border: `1px solid ${theme.palette.common.lightPeriwinkle}`,
+    background: theme.palette.common.main,
+    border: `1px solid ${theme.palette.common.main}`,
     borderRadius: '2px',
     '&:hover': {
       color: theme.palette.primary.main,
@@ -38,7 +38,7 @@ const styles = theme => ({
 const datas = [
   {
     id: 0,
-    label: 'Map Operations',
+    label: 'Map Operations Rate',
     target: 50,
     completed: 45,
   },
@@ -58,19 +58,19 @@ const datas = [
   },
   {
     id: 3,
-    label: 'Zone Management',
+    label: 'Zone Management Rate',
     target: 50,
     completed: 30,
   },
   {
     id: 4,
-    label: 'Zone Management',
+    label: 'Battery Rate',
     target: 50,
     completed: 30,
   },
   {
     id: 5,
-    label: 'Zone Management',
+    label: 'Device Statistics',
     target: 50,
     completed: 30,
   },

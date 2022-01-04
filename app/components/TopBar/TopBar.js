@@ -11,11 +11,11 @@ import CircleIcon from '@mui/icons-material/Circle';
 import Button from '@mui/material/Button';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LocaleToggle from 'containers/LocaleToggle';
-import logo from '../Img/logo.png';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../Img/logo.png';
 import styles from './index.style';
 
 const TopBar = ({ handleDrawerToggle }) => {

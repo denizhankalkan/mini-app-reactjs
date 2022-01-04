@@ -23,6 +23,8 @@ function getPath(progress, r, startDegree, size, trackWidth, s, e) {
   return progressPath;
 }
 
+// progress path array ıcınde donebılırız
+
 function getCorners(
   progress,
   s,
@@ -173,7 +175,7 @@ ProgressLabel.defaultProps = {
   fontSize: 12,
   fillColor: '#ffffff00',
   trackColor: '#e0e6f2',
-  progressColor: '#f5a623',
+  progressColor: '#006166',
   progressSecondaryColor: '#7B7B7B',
   children: '',
 };
